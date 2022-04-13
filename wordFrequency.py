@@ -13,11 +13,14 @@ def countKeywords():
 	with open(sys.argv[1],'r') as file:
 		for line in file: # each line
 			for word in line.split(): # each word
+				word = word.lower()
 				for c in word: # each character
 					if c in punc: # remove string punctuation
 						word = word.replace(c, "")
 				# find keyword occurances
-				if word in dict.keys():
+				if word == "":
+					continue;
+				elif word in dict.keys():
 					dict[word] += 1
 				else:
 					dict[word] = 1
